@@ -1,0 +1,25 @@
+/* This file is for your main application css. */
+@import '../_scss/course-layout';
+
+main {
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+@mixin no-stretch {
+  object-fit: cover;
+  object-position: center;
+}
+@mixin fit-round-img($width, $height: $width) {
+  @include no-stretch;
+  width: $width;
+  height: $height;
+  border-radius: 50%;
+}
+
+.user {
+  > .image > img {
+    @include fit-round-img(80px);
+    margin-right: 0.5em;
+  }
+}

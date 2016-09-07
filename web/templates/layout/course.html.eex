@@ -1,0 +1,52 @@
+<div>
+  <ol class="breadcrumb">
+    <li class="active"><%= current_course(@conn).title %></li>
+  </ol>
+
+  <div class="row course-layout" data-course-id="2">
+    <div class="col-lg-2 col-md-3 col-sm-4">
+      <div class="row">
+        <div class="hidden-xs text-center" id="course-sidebar-logo"><a href="/courses/2">
+                  <span class="image"><img src="http://coursemology.s3.amazonaws.com/file_uploads/files/000/017/162/original/d9127d38a25d3272219a5e6d68980f0f.jpg?1406432631"></span></a>
+        </div>
+        <div class="col-xs-12 user">
+          <span class="image"><img src="https://pbs.twimg.com/media/BvuhF8pIEAA-1i6.jpg:small" alt="Medium image"></span>
+          <a href="/courses/2/users/136"><%= current_course_user(@conn).name %></a>
+        </div>
+      </div>
+      <nav class="navbar-default" role="navigation">
+        <div class="sidebar collapse navbar-collapse" id="course-navigation-sidebar">
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="/courses/2/announcements">Announcements<span class="unread"></span></a></li>
+            <li><a href="/courses/2/assessments/submissions/pending?my_students=true">Submissions<span class="unread"></span></a></li>
+            <li><a href="/courses/2/assessments?category=4&amp;tab=4">Missions<span class="unread"></span></a></li>
+            <li><a href="/courses/2/assessments?category=3&amp;tab=9">Trainings<span class="unread"></span></a></li>
+            <li><a href="/courses/2/achievements">Achievements<span class="unread"></span></a></li>
+            <li><a href="/courses/2/comments/pending">Comments<span class="unread"></span></a></li>
+            <li><a href="/courses/2/leaderboard">Leaderboard<span class="unread"></span></a></li>
+            <li><a href="/courses/2/users">Students<span class="unread"></span></a></li>
+            <li><a href="/courses/2/lesson_plan">Lesson Plan<span class="unread"></span></a></li>
+            <li><a href="/courses/2/materials/folders/4">Workbin<span class="unread"></span></a></li>
+            <li><a href="/courses/2/forums">Forums<span class="unread"></span></a></li>
+          </ul>
+          <h5>
+            Administration
+          </h5>
+          <ul class="nav nav-pills nav-stacked">
+            <li><a href="/courses/2/students">Manage Users<span class="unread"></span></a></li>
+            <li><a href="/courses/2/statistics/student">Student Statistics<span class="unread"></span></a></li>
+            <li><a href="/courses/2/statistics/staff">Staff Statistics<span class="unread"></span></a></li>
+            <li><a href="/courses/2/users/forum_disbursement">Disburse Points<span class="unread"></span></a></li>
+            <li><a href="/courses/2/levels">Levels<span class="unread"></span></a></li>
+            <li><a href="/courses/2/groups">Groups<span class="unread"></span></a></li>
+            <li><a href="/courses/2/assessments/skills">Skills<span class="unread"></span></a></li>
+            <li><a href="/courses/2/admin">Settings<span class="unread"></span></a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="col-lg-10 col-md-9 col-sm-8 course-courses show">
+      <%= render @view_module, @view_template, assigns %>
+    </div>
+  </div>
+</div>
