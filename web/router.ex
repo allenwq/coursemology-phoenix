@@ -17,7 +17,9 @@ defmodule Coursemology.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
-    resources "/courses", CourseController
+    resources "/courses", CourseController do
+      resources "/announcements", AnnouncementController
+    end
   end
 
   # Other scopes may use custom stacks.

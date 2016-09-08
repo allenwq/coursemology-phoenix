@@ -8,8 +8,10 @@ defmodule Coursemology.Course do
     field :registration_key, :string
     field :start_at, Ecto.DateTime
     field :end_at, Ecto.DateTime
+    timestamps inserted_at: :created_at
 
     has_many(:course_users, Coursemology.CourseUser)
+    has_many(:announcements, Coursemology.Announcement)
   end
 
   @doc """

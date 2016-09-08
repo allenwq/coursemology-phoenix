@@ -5,6 +5,7 @@ defmodule Coursemology.User do
     field :name, :string
     field :role, :integer
     field :time_zone, :string
+    timestamps inserted_at: :created_at
 
     has_many(:course_users, Coursemology.CourseUser)
     has_many(:courses, through: [:course_users, :course])

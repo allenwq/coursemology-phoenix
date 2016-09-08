@@ -1,0 +1,23 @@
+<div class="col-lg-10 col-md-9 col-sm-8 course-announcements index">
+  <div class="page-header">
+    <h1><span>Announcements</span>
+      <div class="pull-right">
+        <%= link "New", to: course_announcement_path(@conn, :new, @course.id), class: "btn btn-default btn-xs" %>
+      </div>
+    </h1>
+  </div>
+</div>
+
+<%= for announcement <- @announcements do %>
+
+    <h2><%= announcement.title %></h2>
+    <i class="timestamp"><%= announcement.start_at %>  by</i>
+    <div class="pull-right">
+      <div class="btn-group">
+        <%= link "Edit", to: course_announcement_path(@conn, :edit, 2, announcement), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: course_announcement_path(@conn, :delete, 2, announcement), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </div>
+    </div>
+    <div class="content"><%= raw(announcement.content) %></div>
+    <hr>
+<% end %>

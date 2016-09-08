@@ -7,5 +7,7 @@ defmodule Coursemology.CourseUser do
     field :role, :integer
     field :name, :string
     field :phantom, :boolean
+
+    timestamps inserted_at: :created_at
   end
 end

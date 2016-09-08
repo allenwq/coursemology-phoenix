@@ -1,0 +1,4 @@
+<h2>New announcement</h2>
+
+<%= render "form.html", changeset: @changeset,
+                        action: course_announcement_path(@conn, :create, 2) %>
