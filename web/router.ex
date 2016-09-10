@@ -7,6 +7,7 @@ defmodule Coursemology.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug Coursemology.Auth, repo: Coursemology.Repo
   end
 
   pipeline :api do
@@ -17,6 +18,13 @@ defmodule Coursemology.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+
+    scope "/users" do
+      get    "/sign_in",  SessionController, :new
+      post   "/sign_in",  SessionController, :create
+      delete "/sign_out", SessionController, :delete
+    end
+
     resources "/courses", CourseController do
       resources "/announcements", AnnouncementController
     end

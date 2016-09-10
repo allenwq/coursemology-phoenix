@@ -26,40 +26,45 @@
                 Courses
                 <span class="caret"></span>
               </a>
-              <ul class="dropdown-menu pull-right">
-              <%= for course <- current_user.courses do %>
-                <li>
-                  <%= link course.title, to: course_path(@conn, :show, course) %>
-                </li>
+              <%= if @current_user do %>
+                <ul class="dropdown-menu pull-right">
+                  <%= for course <- @current_user.courses do %>
+                    <li>
+                      <%= link course.title, to: course_path(@conn, :show, course) %>
+                    </li>
+                  <% end %>
+                  <li>
+                    <a href="/courses">All Courses</a>
+                  </li>
+                </ul>
+              <% else %>
+                  <a href="/courses">All Courses</a>
               <% end %>
-
-              <li>
-                <a href="/courses">All Courses</a>
-              </li>
-              </ul>
             </li>
             <li>
               <a href="#">Help</a>
             </li>
             <li>
-              <a class="dropdown-toggle" data-toggle="dropdown">
-                <%= current_user.name %>
-                <span class="caret"></span>
-              </a>
-              <ul class="dropdown-menu">
-                <li>
-                  <a href="/users/edit">Account Settings</a>
-                </li>
-                <li>
-                  <a href="/admin">Administration Panel</a>
-                </li>
-                <li>
-                  <a href="/admin/instance">Instance Administration Panel</a>
-                </li>
-                <li>
-                  <a rel="nofollow" data-method="delete" href="/users/sign_out">Sign Out</a>
-                </li>
-              </ul>
+              <%= if @current_user do %>
+                <a class="dropdown-toggle" data-toggle="dropdown">
+                  <%= @current_user.name %>
+                  <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a href="/users/edit">Account Settings</a>
+                  </li>
+                  <li>
+                    <a href="/admin">Administration Panel</a>
+                  </li>
+                  <li>
+                    <a href="/admin/instance">Instance Administration Panel</a>
+                  </li>
+                  <li>
+                    <a rel="nofollow" data-method="delete" href="/users/sign_out">Sign Out</a>
+                  </li>
+                </ul>
+              <% end %>
             </li>
           </ul>
         </div>
