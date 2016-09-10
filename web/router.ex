@@ -22,7 +22,7 @@ defmodule Coursemology.Router do
     scope "/users" do
       get    "/sign_in",  SessionController, :new
       post   "/sign_in",  SessionController, :create
-      delete "/sign_out", SessionController, :delete
+      get "/sign_out", SessionController, :delete
     end
 
     resources "/courses", CourseController do

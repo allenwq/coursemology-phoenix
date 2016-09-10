@@ -21,26 +21,28 @@
         </div>
         <div class="collapse navbar-collapse" id="site-navigation-navbar">
           <ul class="nav navbar-nav pull-right">
-            <li>
-              <a class="dropdown-toggle" data-toggle="dropdown">
-                Courses
-                <span class="caret"></span>
-              </a>
-              <%= if @current_user do %>
-                <ul class="dropdown-menu pull-right">
-                  <%= for course <- @current_user.courses do %>
+            <%= if @current_user do %>
+              <li>
+                <a class="dropdown-toggle" data-toggle="dropdown">
+                  Courses
+                  <span class="caret"></span>
+                </a>
+                  <ul class="dropdown-menu pull-right">
+                    <%= for course <- @current_user.courses do %>
+                      <li>
+                        <%= link course.title, to: course_path(@conn, :show, course) %>
+                      </li>
+                    <% end %>
                     <li>
-                      <%= link course.title, to: course_path(@conn, :show, course) %>
+                      <a href="/courses">All Courses</a>
                     </li>
-                  <% end %>
-                  <li>
-                    <a href="/courses">All Courses</a>
-                  </li>
-                </ul>
-              <% else %>
-                  <a href="/courses">All Courses</a>
-              <% end %>
-            </li>
+                  </ul>
+              </li>
+            <%= else %>
+              <li>
+                <a href="/courses">Courses</a>
+              </li>
+            <% end %>
             <li>
               <a href="#">Help</a>
             </li>
@@ -61,9 +63,11 @@
                     <a href="/admin/instance">Instance Administration Panel</a>
                   </li>
                   <li>
-                    <a rel="nofollow" data-method="delete" href="/users/sign_out">Sign Out</a>
+                    <%= link "Sign Out", to: session_path(@conn, :delete) %>
                   </li>
                 </ul>
+              <% else %>
+                  <%= link "Sign in", to: session_path(@conn, :new) %>
               <% end %>
             </li>
           </ul>
