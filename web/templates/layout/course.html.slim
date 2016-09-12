@@ -1,0 +1,99 @@
+div
+  ol.breadcrumb
+    li.active= @course.title
+  .row.course-layout data-course-id="2"
+    .col-lg-2.col-md-3.col-sm-4
+      .row
+        #course-sidebar-logo.hidden-xs.text-center
+          a href="/courses/2"
+            span.image
+              img src="http://coursemology.s3.amazonaws.com/file_uploads/files/000/017/162/original/d9127d38a25d3272219a5e6d68980f0f.jpg?1406432631"
+        = if @course_user do
+          .col-xs-12.user
+            span.image
+              img src="https://pbs.twimg.com/media/BvuhF8pIEAA-1i6.jpg:small"
+            a href="/courses/2/users/136" = @course_user && @course_user.name
+      nav.navbar-default role="navigation"
+        #course-navigation-sidebar.sidebar.collapse.navbar-collapse
+          ul.nav.nav-pills.nav-stacked
+            li
+              a href="/courses/2/announcements"
+                | Announcements
+                span.unread
+            li
+              a href="/courses/2/assessments/submissions/pending?my_students=true"
+                | Submissions
+                span.unread
+            li
+              a href="/courses/2/assessments?category=4&tab=4"
+                | Missions
+                span.unread
+            li
+              a href="/courses/2/assessments?category=3&tab=9"
+                | Trainings
+                span.unread
+            li
+              a href="/courses/2/achievements"
+                | Achievements
+                span.unread
+            li
+              a href="/courses/2/comments/pending"
+                | Comments
+                span.unread
+            li
+              a href="/courses/2/leaderboard"
+                | Leaderboard
+                span.unread
+            li
+              a href="/courses/2/users"
+                | Students
+                span.unread
+            li
+              a href="/courses/2/lesson_plan"
+                | Lesson Plan
+                span.unread
+            li
+              a href="/courses/2/materials/folders/4"
+                | Workbin
+                span.unread
+            li
+              a href="/courses/2/forums"
+                | Forums
+                span.unread
+          h5
+            | Administration
+          ul.nav.nav-pills.nav-stacked
+            li
+              a href="/courses/2/students"
+                | Manage Users
+                span.unread
+            li
+              a href="/courses/2/statistics/student"
+                | Student Statistics
+                span.unread
+            li
+              a href="/courses/2/statistics/staff"
+                | Staff Statistics
+                span.unread
+            li
+              a href="/courses/2/users/forum_disbursement"
+                | Disburse Points
+                span.unread
+            li
+              a href="/courses/2/levels"
+                | Levels
+                span.unread
+            li
+              a href="/courses/2/groups"
+                | Groups
+                span.unread
+            li
+              a href="/courses/2/assessments/skills"
+                | Skills
+                span.unread
+            li
+              a href="/courses/2/admin"
+                | Settings
+                span.unread
+    .col-lg-10.col-md-9.col-sm-8.course-courses.show
+      = render @view_module, @view_template, assigns

@@ -1,0 +1,22 @@
+h2 All courses
+table.table
+  thead
+    tr
+      th Title
+      th Description
+      th Start at
+      th End at
+      th
+  tbody
+    = for course <- @courses do
+      tr
+        td= link course.title, to: course_path(@conn, :show, course)
+        td= raw(course.description)
+        td= course.start_at
+        td= course.end_at
+        td.text-right
+          = if @current_ability |> can? update(course) do
+            = link "Edit", to: course_path(@conn, :edit, course), class: "btn btn-default btn-xs"
+          = if @current_ability |> can? delete(course) do
+            = link "Delete", to: course_path(@conn, :delete, course), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs"
+= link "New course", to: course_path(@conn, :new)
