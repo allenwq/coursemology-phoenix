@@ -31,9 +31,10 @@ defmodule Coursemology.Router do
       get   "/sign_out", SessionController, :delete
     end
 
-    resources "/courses", CourseController do
+    get   "/courses/:id/admin", CourseController, :edit
+    resources "/courses", CourseController, except: [:edit] do
       pipe_through :course
-      resources "/announcements", AnnouncementController
+      resources "/announcements", AnnouncementController, except: [:show]
     end
   end
 

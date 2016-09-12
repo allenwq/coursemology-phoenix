@@ -4,7 +4,7 @@ defmodule Coursemology.AnnouncementController do
   alias Coursemology.Announcement
 
   def index(conn, _params) do
-    course = conn.assigns[:course] |> Coursemology.Repo.preload(:announcements)
+    course = conn.assigns[:course] |> Coursemology.Repo.preload(announcements: :creator)
     render(conn, "index.html", announcements: course.announcements)
   end
 
