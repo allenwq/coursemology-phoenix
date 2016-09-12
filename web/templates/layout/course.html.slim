@@ -17,82 +17,82 @@ div
         #course-navigation-sidebar.sidebar.collapse.navbar-collapse
           ul.nav.nav-pills.nav-stacked
             li
-              a href="/courses/2/announcements"
+              a href="#{course_announcement_path(@conn, :index, @course)}"
                 | Announcements
                 span.unread
             li
-              a href="/courses/2/assessments/submissions/pending?my_students=true"
+              a href="/courses/#{@course.id}/assessments/submissions/pending?my_students=true"
                 | Submissions
                 span.unread
             li
-              a href="/courses/2/assessments?category=4&tab=4"
+              a href="/courses/#{@course.id}/assessments?category=4&tab=4"
                 | Missions
                 span.unread
             li
-              a href="/courses/2/assessments?category=3&tab=9"
+              a href="/courses/#{@course.id}/assessments?category=3&tab=9"
                 | Trainings
                 span.unread
             li
-              a href="/courses/2/achievements"
+              a href="/courses/#{@course.id}/achievements"
                 | Achievements
                 span.unread
             li
-              a href="/courses/2/comments/pending"
+              a href="/courses/#{@course.id}/comments/pending"
                 | Comments
                 span.unread
             li
-              a href="/courses/2/leaderboard"
+              a href="/courses/#{@course.id}/leaderboard"
                 | Leaderboard
                 span.unread
             li
-              a href="/courses/2/users"
+              a href="/courses/#{@course.id}/users"
                 | Students
                 span.unread
             li
-              a href="/courses/2/lesson_plan"
+              a href="/courses/#{@course.id}/lesson_plan"
                 | Lesson Plan
                 span.unread
             li
-              a href="/courses/2/materials/folders/4"
+              a href="/courses/#{@course.id}/materials/folders/4"
                 | Workbin
                 span.unread
             li
-              a href="/courses/2/forums"
+              a href="/courses/#{@course.id}/forums"
                 | Forums
                 span.unread
           h5
             | Administration
           ul.nav.nav-pills.nav-stacked
             li
-              a href="/courses/2/students"
+              a href="/courses/#{@course.id}/students"
                 | Manage Users
                 span.unread
             li
-              a href="/courses/2/statistics/student"
+              a href="/courses/#{@course.id}/statistics/student"
                 | Student Statistics
                 span.unread
             li
-              a href="/courses/2/statistics/staff"
+              a href="/courses/#{@course.id}/statistics/staff"
                 | Staff Statistics
                 span.unread
             li
-              a href="/courses/2/users/forum_disbursement"
+              a href="/courses/#{@course.id}/users/forum_disbursement"
                 | Disburse Points
                 span.unread
             li
-              a href="/courses/2/levels"
+              a href="/courses/#{@course.id}/levels"
                 | Levels
                 span.unread
             li
-              a href="/courses/2/groups"
+              a href="/courses/#{@course.id}/groups"
                 | Groups
                 span.unread
             li
-              a href="/courses/2/assessments/skills"
+              a href="/courses/#{@course.id}/assessments/skills"
                 | Skills
                 span.unread
             li
-              a href="/courses/2/admin"
+              a href="/courses/#{@course.id}/admin"
                 | Settings
                 span.unread
     .col-lg-10.col-md-9.col-sm-8.course-courses.show
