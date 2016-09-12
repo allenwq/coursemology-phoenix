@@ -2,10 +2,10 @@ defmodule Coursemology.AnnouncementController do
   use Coursemology.Web, :controller
 
   alias Coursemology.Announcement
-  plug :load_course
 
   def index(conn, _params) do
-    render(conn, "index.html", announcements: conn.assigns[:course].announcements)
+    course = conn.assigns[:course] |> Coursemology.Repo.preload(:announcements)
+    render(conn, "index.html", announcements: course.announcements)
   end
 
   def new(conn, _params) do
@@ -61,11 +61,5 @@ defmodule Coursemology.AnnouncementController do
     conn
     |> put_flash(:info, "Announcement deleted successfully.")
     |> redirect(to: course_announcement_path(conn, :index, 2))
-  end
-
-  defp load_course(conn, _) do
-    course = Repo.get!(Coursemology.Course, conn.params["course_id"])
-    course = Coursemology.Repo.preload(course, :announcements)
-    assign(conn, :course, course)
   end
 end

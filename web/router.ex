@@ -7,11 +7,17 @@ defmodule Coursemology.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    # Load current_user
     plug Coursemology.Auth, repo: Coursemology.Repo
+    plug Coursemology.LoadAbility
   end
 
   pipeline :api do
     plug :accepts, ["json"]
+  end
+
+  pipeline :course do
+    plug Coursemology.LoadCourse
   end
 
   scope "/", Coursemology do
@@ -26,6 +32,7 @@ defmodule Coursemology.Router do
     end
 
     resources "/courses", CourseController do
+      pipe_through :course
       resources "/announcements", AnnouncementController
     end
   end

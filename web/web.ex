@@ -36,6 +36,8 @@ defmodule Coursemology.Web do
 
       import Coursemology.Router.Helpers
       import Coursemology.Gettext
+
+      import Canada, only: [can?: 2]
     end
   end
 
@@ -52,6 +54,8 @@ defmodule Coursemology.Web do
       import Coursemology.Router.Helpers
       import Coursemology.ErrorHelpers
       import Coursemology.Gettext
+
+      import Canada, only: [can?: 2]
     end
   end
 

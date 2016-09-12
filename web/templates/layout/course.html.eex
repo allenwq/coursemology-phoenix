@@ -9,10 +9,12 @@
         <div class="hidden-xs text-center" id="course-sidebar-logo"><a href="/courses/2">
                   <span class="image"><img src="http://coursemology.s3.amazonaws.com/file_uploads/files/000/017/162/original/d9127d38a25d3272219a5e6d68980f0f.jpg?1406432631"></span></a>
         </div>
-        <div class="col-xs-12 user">
-          <span class="image"><img src="https://pbs.twimg.com/media/BvuhF8pIEAA-1i6.jpg:small" alt="Medium image"></span>
-          <a href="/courses/2/users/136"><%= current_course_user(@conn).name %></a>
-        </div>
+        <%= if @course_user do %>
+          <div class="col-xs-12 user">
+            <span class="image"><img src="https://pbs.twimg.com/media/BvuhF8pIEAA-1i6.jpg:small" alt="Medium image"></span>
+            <a href="/courses/2/users/136"><%= @course_user && @course_user.name %></a>
+          </div>
+        <% end %>
       </div>
       <nav class="navbar-default" role="navigation">
         <div class="sidebar collapse navbar-collapse" id="course-navigation-sidebar">

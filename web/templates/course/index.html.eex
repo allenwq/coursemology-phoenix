@@ -20,8 +20,12 @@
       <td><%= course.end_at %></td>
 
       <td class="text-right">
-        <%= link "Edit", to: course_path(@conn, :edit, course), class: "btn btn-default btn-xs" %>
-        <%= link "Delete", to: course_path(@conn, :delete, course), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+        <%= if @current_ability |> can? update(course) do %>
+          <%= link "Edit", to: course_path(@conn, :edit, course), class: "btn btn-default btn-xs" %>
+        <% end %>
+        <%= if @current_ability |> can? delete(course) do %>
+          <%= link "Delete", to: course_path(@conn, :delete, course), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+        <% end %>
       </td>
     </tr>
 <% end %>

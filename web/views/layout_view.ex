@@ -6,9 +6,7 @@ defmodule Coursemology.LayoutView do
   end
 
   def current_course_user(conn) do
-    Coursemology.Repo.get_by(
-      Coursemology.CourseUser, user_id: conn.assigns.current_user.id, course_id: current_course(conn).id
-    )
+    conn.assigns[:course_user]
   end
 
   def course_layout?(conn) do

@@ -3,6 +3,8 @@ defmodule Coursemology.CourseController do
 
   alias Coursemology.Course
 
+  plug Coursemology.LoadCourse when action in [:show, :edit, :update, :delete]
+
   def index(conn, _params) do
     courses = Repo.all(Course)
     render(conn, "index.html", courses: courses)
@@ -27,9 +29,8 @@ defmodule Coursemology.CourseController do
   end
 
   def show(conn, %{"id" => id}) do
-    course = Repo.get!(Course, id)
     conn
-      |> render("show.html", course: course)
+      |> render("show.html", course: conn.assigns[:course])
   end
 
   def edit(conn, %{"id" => id}) do
