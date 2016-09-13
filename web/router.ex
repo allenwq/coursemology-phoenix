@@ -35,6 +35,7 @@ defmodule Coursemology.Router do
     resources "/courses", CourseController, except: [:edit] do
       pipe_through :course
       resources "/announcements", AnnouncementController, except: [:show]
+      resources "/lesson_plan", LessonPlanItemController, only: [:index]
     end
   end
 

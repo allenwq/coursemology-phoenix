@@ -12,6 +12,8 @@ defmodule Coursemology.Course do
 
     has_many(:course_users, Coursemology.CourseUser)
     has_many(:announcements, Coursemology.Announcement)
+    has_many(:lesson_plan_items, Coursemology.LessonPlanItem)
+    has_many(:lesson_plan_milestones, Coursemology.LessonPlanMilestone)
   end
 
   @doc """
