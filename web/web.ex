@@ -56,6 +56,7 @@ defmodule Coursemology.Web do
       import Coursemology.Gettext
 
       import Canada, only: [can?: 2]
+      import FontAwesomePhoenix.HTML
     end
   end
 

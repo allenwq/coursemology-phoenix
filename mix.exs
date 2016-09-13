@@ -40,7 +40,8 @@ defmodule Coursemology.Mixfile do
      {:cowboy, "~> 1.0"},
      {:comeonin, "~> 2.0"},
      {:canada, "~> 1.0.0"},
-     {:phoenix_slime, "~> 0.7.0"}
+     {:phoenix_slime, "~> 0.7.0"},
+     {:font_awesome_phoenix, "~> 0.3"}
     ]
   end
 
