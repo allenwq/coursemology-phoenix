@@ -7,21 +7,22 @@
 .clearfix
 
 = for announcement <- @announcements do
-  h2
-    = announcement.title
-    = if announcement.sticky do
-      small title="Sticky"
-        = fa_icon "thumb-tack"
-    = if !currently_active?(announcement) do
-      small = fa_icon "calendar"
-  
-  i.timestamp
-    = announcement.start_at
-    | &nbsp;by&nbsp;
-    = announcement.creator.name
-  .pull-right
-    .btn-group
-      = link "Edit", to: course_announcement_path(@conn, :edit, 2, announcement), class: "btn btn-default btn-xs"
-      = link "Delete", to: course_announcement_path(@conn, :delete, 2, announcement), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs"
-  .content= raw(announcement.content)
-  hr
+  .announcement
+    h2
+      = announcement.title
+      = if announcement.sticky do
+        small title="Sticky"
+          = fa_icon "thumb-tack"
+      = if !currently_active?(announcement) do
+        small = fa_icon "calendar"
+    
+    i.timestamp
+      = announcement.start_at
+      | &nbsp;by&nbsp;
+      = announcement.creator.name
+    .pull-right
+      .btn-group
+        = link "Edit", to: course_announcement_path(@conn, :edit, 2, announcement), class: "btn btn-default btn-xs"
+        = link "Delete", to: course_announcement_path(@conn, :delete, 2, announcement), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs"
+    .content= raw(announcement.content)
+    hr

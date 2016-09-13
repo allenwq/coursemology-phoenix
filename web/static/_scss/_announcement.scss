@@ -1,0 +1,81 @@
+$gray-base:              #000 !default;
+$gray-light:             lighten($gray-base, 46.7%) !default; // #777
+$gray-lighter:           lighten($gray-base, 93.5%) !default; // #eee
+
+@mixin timestamp {
+  .timestamp {
+    color: $gray-light;
+    font-size: 13px;
+    line-height: 18px;
+  }
+}
+
+@mixin announcement {
+  padding-left: 8px;
+
+  @include timestamp;
+
+  .content {
+    font-size: 13px;
+    line-height: 18px;
+    margin-top: 20px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: bold;
+    margin: 9px 0;
+  }
+
+  h1 {
+    font-size: 30px;
+    line-height: 36px;
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    font-size: 24px;
+    line-height: 36px;
+
+    &.announcement-title {
+      margin: 9px 0 -3px;
+    }
+  }
+
+  h3 {
+    font-size: 18px;
+    line-height: 27px;
+  }
+
+  h4 {
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  h5 {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  h6 {
+    color: $gray-light;
+    font-size: 11px;
+    line-height: 18px;
+    text-transform: uppercase;
+  }
+
+  blockquote {
+    border-left: 5px solid $gray-lighter;
+    font-size: inherit;
+    margin: 0 0 18px;
+    padding: 0 0 0 15px;
+  }
+
+  ul {
+    list-style: none;
+  }
+}

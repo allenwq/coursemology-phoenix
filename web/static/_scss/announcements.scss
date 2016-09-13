@@ -1,0 +1,5 @@
+@import 'announcement';
+
+.announcement {
+  @include announcement;
+}
