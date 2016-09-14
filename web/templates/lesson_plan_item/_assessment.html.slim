@@ -1,0 +1,35 @@
+- assessment = @assessment
+- item = @item
+.assessment
+  a role="button" data-toggle="collapse" href="item-course_assessment-#{assessment.id}-body"
+    li.list-group-item
+
+      .pull-right
+        - if item.end_at do
+          = "From #{item.start_at} to #{item.end_at}"
+        - else
+          = item.start_at
+
+      span.label.label-default
+        = assessment.tab.category.title
+      | &nbsp;
+      = item.title
+
+      - if item.draft do
+        span data-placement="top" title="Draft"
+          = fa_icon "eye-slash"
+
+  .lesson-plan-item-body.panel-collapse.collapse.in id="item-course_assessment-#{assessment.id}-body"
+    li.list-group-item
+
+      .pull-right
+        div.btn-group
+          = link "Edit", to: "#", class: "btn btn-default btn-xs"
+          = link "Delete", to: "#", class: "btn btn-danger btn-xs"
+
+      = if !item.description do
+        p
+          i = "No description"
+      - else
+        p
+          = raw item.description

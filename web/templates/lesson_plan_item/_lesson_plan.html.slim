@@ -18,5 +18,7 @@
         em No description
       - else
         = raw(milestone.description)
-    
+
     ul.list-group
+      = for item <- items do
+        = render_item item
