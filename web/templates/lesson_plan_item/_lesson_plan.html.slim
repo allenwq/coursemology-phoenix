@@ -1,22 +1,22 @@
-- milestone = @milestone[:milestone]
+- %{milestone: milestone, items: items} = @milestone_with_items
 .panel.panel-default
   .panel-heading
     a role='button' data-toggle='collapse' href="milestone-#{milestone.id}-body"
       h3.panel-title
-        = @milestone.title
+        = milestone.title
         .pull-right
-          = @milestone.start_at
-
+          = milestone.start_at
+  
   .milestone-body.panel-collapse.collapse.in id="milestone-#{milestone.id}-body" class="past"
     .panel-body
       .pull-right
         div.btn-group
-          = link "Edit", to: '#', class: "btn btn-default btn-xs"
-          = link "Delete", to: '#', class: "btn btn-danger btn-xs"
-
+          = link "Edit", to: "#", class: "btn btn-default btn-xs"
+          = link "Delete", to: "#", class: "btn btn-danger btn-xs"
+  
       = if !milestone.description do
         em No description
       - else
         = raw(milestone.description)
-
+    
     ul.list-group

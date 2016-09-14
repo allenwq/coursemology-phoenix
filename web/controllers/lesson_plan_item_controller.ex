@@ -14,16 +14,14 @@ defmodule Coursemology.LessonPlanItemController do
   end
 
   defp grouped_item_and_milestone(items, milestones) do
-    ret = []
-    ungrouped = []
-    current_milestone = List.first(milestones)
-    ret = for m <- milestones do
-      IO.puts inspect(current_milestone)
-      items_of_milestone = Enum.filter(items, fn(i) -> i.start_at >= current_milestone.start_at && i.start_at < m.start_at end)
-      # ret = ret ++ [[milestone: current_milestone, items: items]]
-      current_milestone = m
-      items_of_milestone
+    milestone_list = [List.first(milestones)]
+    milestone_list = Enum.reduce milestones, milestone_list, fn m, milestone_list ->
+      current = List.first(milestone_list)
+      items_of_milestone = Enum.filter(items, fn(i) -> i.start_at >= current.start_at && i.start_at < m.start_at end)
+      milestone_list ++ [%{milestone: m, items: items_of_milestone}]
+      |> List.replace_at(0, m)
     end
-    ret
+    # Delete current milestone
+    List.delete_at(milestone_list, 0)
   end
 end

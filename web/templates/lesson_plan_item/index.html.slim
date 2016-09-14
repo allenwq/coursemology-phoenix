@@ -2,5 +2,5 @@
   h1
     span Lesson Plan
     
-= for m <- @milestones do
-  = render "_lesson_plan.html", milestone: m
+= for milestone_with_items <- @milestones do
+  = render "_lesson_plan.html", milestone_with_items: milestone_with_items
