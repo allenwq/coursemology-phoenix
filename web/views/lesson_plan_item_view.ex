@@ -8,7 +8,6 @@ defmodule Coursemology.LessonPlanItemView do
         render "_event.html", event: event, item: item
       "Course::Assessment" ->
         assessment = Coursemology.Assessment.for_item(item)
-        Coursemology.Repo.preload(assessment, [tab: :category])
         render "_assessment.html", assessment: assessment, item: item
     end
   end
@@ -23,6 +22,15 @@ defmodule Coursemology.LessonPlanItemView do
         "Recitation"
       3 ->
         "Tutorial"
+    end
+  end
+
+  def milestone_period_class(item) do
+    case Ecto.DateTime.compare(item.start_at, Ecto.DateTime.utc) do
+      :lt ->
+        "past"
+      _ ->
+        ""
     end
   end
 end

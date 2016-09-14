@@ -1,6 +1,7 @@
 .page-header
   h1
     span Lesson Plan
-    
-= for milestone_with_items <- @milestones do
-  = render "_lesson_plan.html", milestone_with_items: milestone_with_items
+
+.course-lesson-plan-items.index
+  = for milestone_with_items <- @milestones do
+    = render "_lesson_plan.html", milestone_with_items: milestone_with_items

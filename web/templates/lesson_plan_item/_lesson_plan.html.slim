@@ -1,13 +1,13 @@
 - %{milestone: milestone, items: items} = @milestone_with_items
 .panel.panel-default
   .panel-heading
-    a role='button' data-toggle='collapse' href="milestone-#{milestone.id}-body"
+    a role="button" data-toggle="collapse" href="#milestone-#{milestone.id}-body"
       h3.panel-title
         = milestone.title
         .pull-right
           = milestone.start_at
   
-  .milestone-body.panel-collapse.collapse.in id="milestone-#{milestone.id}-body" class="past"
+  .milestone-body.panel-collapse.collapse.in id="milestone-#{milestone.id}-body" class="#{milestone_period_class(milestone)}"
     .panel-body
       .pull-right
         div.btn-group
