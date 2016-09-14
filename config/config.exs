@@ -9,6 +9,9 @@ use Mix.Config
 config :coursemology,
   ecto_repos: [Coursemology.Repo]
 
+# Use a different migration table from rails
+config :coursemology, Coursemology.Repo, migration_source: "schema_migrations_ecto"
+
 # Configures the endpoint
 config :coursemology, Coursemology.Endpoint,
   url: [host: "localhost"],
