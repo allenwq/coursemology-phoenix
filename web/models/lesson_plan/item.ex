@@ -5,6 +5,8 @@ defmodule Coursemology.LessonPlanItem do
     field :actable_id, :integer
     field :actable_type, :string
     belongs_to(:course, Coursemology.Course)
+    belongs_to(:event, Coursemology.LessonPlanEvent)
+    belongs_to(:assessment, Coursemology.Assessment)
     field :title, :string
     field :description, :string
     field :draft, :boolean
