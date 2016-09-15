@@ -8,9 +8,13 @@ defmodule Coursemology.LoadAbility do
   end
 
   def call(conn, _opts) do
+    conn
+    |> load_ability()
+  end
+
+  defp load_ability(conn) do
     user = conn.assigns.current_user
     ability = %Ability{role: user && user.role}
-
     assign(conn, :current_ability, ability)
   end
 end

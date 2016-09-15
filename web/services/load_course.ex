@@ -11,7 +11,11 @@ defmodule Coursemology.LoadCourse do
 
   def call(conn, opts) do
     course_id = conn.params["course_id"] || conn.params["id"]
-    conn |> load_course(course_id) |> load_user_course() |> update_course_user_ability()
+    conn
+    |> ensure_user_sign_in()
+    |> load_course(course_id)
+    |> load_user_course()
+    |> update_course_user_ability()
   end
 
   defp load_course(conn, course_id) do
@@ -35,5 +39,16 @@ defmodule Coursemology.LoadCourse do
     ability = %Ability{ability | course_role: course_user && course_user.role}
 
     assign(conn, :current_ability, ability)
+  end
+
+  defp ensure_user_sign_in(conn) do
+    if conn.assigns.current_user do
+      conn
+    else
+      conn
+      |> Phoenix.Controller.put_flash(:error, "You must be logged in to access the page")
+      |> Phoenix.Controller.redirect(to: "/courses")
+      |> halt
+    end
   end
 end
